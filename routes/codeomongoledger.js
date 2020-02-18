@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Codeomongo = require('../models/codeomongodb')
+const Codeomongo = require('../models/codeomongoledger')
 
 
 // Getting All
@@ -20,10 +20,12 @@ router.get('/:id', getCodeomongo, (req, res) => {
 // Creating One
 router.post('/', async (req, res) => {
     const codeomongo = new Codeomongo({
-        nama_user: req.body.nama_user,
-        email_user: req.body.email_user,
-        id_level: req.body.id_level
-     
+       id_user: req.body.id_user,
+       date_createwallet: req.body.date_createwallet,
+       wallet_address: req.body.wallet_address,
+       actual_balance: req.body.actual_balance,
+       ETH_actualbalance: req.body.ETH_actualbalance,
+       private_key: req.body.private_key
     })
     try {
         const newCodeomongo = await codeomongo.save()

@@ -2,7 +2,7 @@ const mongoose = require ('mongoose')
 
 const codeomongoSchema = new mongoose.Schema({
     id_category: {
-        type: int,
+        type: String,
         required: true
     },
     title_cms: {
@@ -13,11 +13,11 @@ const codeomongoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    date_cms: {
+    date_updatecms: {
         type: Date,
         required: true,
         default: Date.now
     }
 })
 
-module.exports = mongoose.model('tabel_cms', codeomongoSchema)
+module.exports = mongoose.model('cms_tabels', codeomongoSchema)

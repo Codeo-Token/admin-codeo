@@ -9,15 +9,15 @@ const codeomongoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    id_country: {
+    id_level: {
         type: String,
         required: true
     },
-    date_updatecms: {
+    date_user: {
         type: Date,
         required: true,
         default: Date.now
     }
 })
 
-module.exports = mongoose.model('tabel_cms', codeomongoSchema)
+module.exports = mongoose.model('admin_users', codeomongoSchema)

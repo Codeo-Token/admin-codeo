@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
-const Codeomongo = require('../models/codeomongodb')
+const Codeomongo = require('../models/codeomongodbcms')
 
 
 // Getting All
 router.get('/', async (req, res) => {
     try {
-        const codeomongo = await Codeomongo.find()
-        res.json(codeomongo)
+        const codeomongodbcms = await Codeomongo.find()
+        res.json(codeomongodbcms)
     } catch (err) {
         res.status(500).json({ message: err.message })
     }
@@ -15,18 +15,18 @@ router.get('/', async (req, res) => {
 
 // Getting One
 router.get('/:id', getCodeomongo, (req, res) => {
-    res.json(res.codeomongo)
+    res.json(res.codeomongodbcms)
 })
 // Creating One
 router.post('/', async (req, res) => {
-    const codeomongo = new Codeomongo({
-        nama_user: req.body.nama_user,
-        email_user: req.body.email_user,
-        id_level: req.body.id_level
+    const codeomongodbcms = new Codeomongo({
+        id_category: req.body.id_category,
+        title_cms: req.body.title_cms,
+        description_cms: req.body.description_cms
      
     })
     try {
-        const newCodeomongo = await codeomongo.save()
+        const newCodeomongo = await codeomongodbcms.save()
         res.status(201).json(newCodeomongo)
     } catch (err) {
         res.status(400).json({ message: err.message })
@@ -35,13 +35,13 @@ router.post('/', async (req, res) => {
 // Updating One
 router.patch('/:id', getCodeomongo, async (req, res) => {
     if (req.body.name != null) {
-        res.codeomongo.name = req.body.name
+        res.codeomongodbcms.name = req.body.name
     }
     if(req.body.codeomongoToChannel != null) {
-        res.codeomongo.codeomongoToChannel = req.body.codeomongoToChannel
+        res.codeomongodbcms.codeomongoToChannel = req.body.codeomongoToChannel
     }
     try {
-        const updateCodeomongo = await res.codeomongo.save()
+        const updateCodeomongo = await res.codeomongodbcms.save()
         res.json(updateCodeomongo)
     } catch (err) {
         res.status(400).json({ message: err.message })
@@ -50,7 +50,7 @@ router.patch('/:id', getCodeomongo, async (req, res) => {
 // Deleting One
 router.delete('/:id', getCodeomongo, async (req, res) => {
     try {
-        await res.codeomongo.remove()
+        await res.codeomongodbcms.remove()
         res.json({ message: 'Deleted The Data' })
     } catch (err) {
         res.status(500).json({ message: err.message})
@@ -58,17 +58,17 @@ router.delete('/:id', getCodeomongo, async (req, res) => {
 })
 
 async function getCodeomongo(req, res, next){
-    let codeomongo
+    let codeomongodbcms
     try {
-        codeomongo = await Codeomongo.findById(req.params.id)
-        if(codeomongo == null){
+        codeomongodbcms = await Codeomongo.findById(req.params.id)
+        if(codeomongodbcms == null){
             return res.status(404).json({ message: 'Cannot find data' })
         }
     } catch (err) {
         return res.status(500).json({ message: err.message })
     }
 
-    res.codeomongo = codeomongo
+    res.codeomongodbcms = codeomongodbcms
     next()
 }
 
