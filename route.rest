@@ -1,0 +1,28 @@
+GET http://localhost:3000/codeomongodb
+
+###
+
+GET http://localhost:3000/codeomongodb/5e4a70695af7ee348cd67924
+
+###
+
+POST http://localhost:3000/codeomongodb
+Content-Type: application/json
+
+{
+    "name": "Agatha",
+    "codeomongoToChannel": "Web Developer"
+}
+
+###
+
+DELETE http://localhost:3000/codeomongodb/5e4a70695af7ee348cd67924
+
+###
+
+PATCH http://localhost:3000/codeomongodb/5e4a6e0405ac9305041f7374
+Content-Type: application/json
+
+{
+    "name": "Noob Ivan"
+}
