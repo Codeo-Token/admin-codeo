@@ -13,6 +13,10 @@ const codeomongoSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    password_user: {
+        type: String,
+        required: true
+    },
     date_user: {
         type: Date,
         required: true,

@@ -22,7 +22,8 @@ router.post('/', async (req, res) => {
     const codeomongo = new Codeomongo({
         nama_user: req.body.nama_user,
         email_user: req.body.email_user,
-        id_level: req.body.id_level
+        id_level: req.body.id_level,
+        password_user: req.body.password_user
      
     })
     try {
